@@ -54,7 +54,7 @@ double F(double X)
 {
    double f; 
 
-   f = sin(X);
+   f = sqrt(pow(sin(3*X)*cos(3*X),2)+1);
    return f;
 }
 
