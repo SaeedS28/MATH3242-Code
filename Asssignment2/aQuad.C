@@ -105,7 +105,7 @@ double F(double X, int *CNT)
    double f; 
 
    *CNT = *CNT + 1; 
-   f = 100.0 / (X * X) * sin(10.0 / X); 
+   f = sqrt(1+pow(cos(5*X)*sin(5*X),2)); /* Modified to match the specs */
    return f;
 }
 
