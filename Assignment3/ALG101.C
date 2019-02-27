@@ -86,15 +86,12 @@ double F(int I, double *X)
 
    switch (I) {
       case 1:
-         f = 3*X[0] - cos(X[1]*X[2]) -0.5;
+         f = log(pow(X[0],2)+pow(X[1],2))-log(2)-log(pi);
          break;
       case 2:
-         f = X[0]*X[0] - 81*(X[1]+0.1)*(X[1]+0.1) + sin(X[2]) + 1.06;
+         f = exp(X[0]-X[1])+cos(X[0]*X[1]);
          break;
-      case 3:
-         f = exp(-X[0]*X[1]) + 20*X[2] + (10*pi-3)/3;
-         break;
-   }   
+ }   
    return f;
 }
 /*  P is the Jacobian Matrix  J(X)  */
@@ -106,39 +103,20 @@ double P(int I, int J, double *X)
       case 1: 
          switch (J) {
             case 1:
-               p = 3;
+               p = -1*(pow(X[1],3)*cos(X[0]*X[1])-2*X[0]+X[0]*X[0]*X[1]*cos(X[0]*X[1]))/(X[0]*X[0]+X[1]*X[1]);
                break;
             case 2:
-               p = X[2]*sin(X[1]*X[2]);       
-               break;
-            case 3:
-               p = X[1]*sin(X[1]*X[2]);
+               p = -1*(pow(X[0],3)*cos(X[0]*X[1])-2*X[1]+X[0]*X[1]*X[1]*cos(X[0]*X[1]))/(X[0]*X[0]+X[1]*X[1]);
                break;
          }     
          break;
       case 2:
          switch (J) {
             case 1:
-               p = 2*X[0];
+               p = exp(X[0]-X[1])-X[1]*sin(X[0]*X[1]);
                break;
             case 2:
-               p = -162*(X[1]+0.1);       
-               break;
-            case 3:
-               p = cos(X[2]);
-               break;
-         }     
-         break;
-      case 3:
-         switch (J) {
-            case 1:
-               p = -X[1]*exp(-X[0]*X[1]);
-               break;
-            case 2:
-               p = -X[0]*exp(-X[0]*X[1]);       
-               break;
-            case 3:
-               p = 20;
+               p = -1*exp(X[0]-X[1])-X[0]*sin(X[0]*X[1]);
                break;
          }     
          break;
