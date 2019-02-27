@@ -86,7 +86,7 @@ double F(int I, double *X)
 
    switch (I) {
       case 1:
-         f = log(pow(X[0],2)+pow(X[1],2))-log(2)-log(pi);
+         f = log(pow(X[0],2)+pow(X[1],2))-sin(X[0]*X[1])-log(2)-log(pi);
          break;
       case 2:
          f = exp(X[0]-X[1])+cos(X[0]*X[1]);
@@ -103,20 +103,20 @@ double P(int I, int J, double *X)
       case 1: 
          switch (J) {
             case 1:
-               p = -1*(pow(X[1],3)*cos(X[0]*X[1])-2*X[0]+X[0]*X[0]*X[1]*cos(X[0]*X[1]))/(X[0]*X[0]+X[1]*X[1]);
+               p = ((2*X[0])/(X[0]*X[0]+X[1]*X[1]))-(X[1]*cos(X[0]*X[1]));
                break;
             case 2:
-               p = -1*(pow(X[0],3)*cos(X[0]*X[1])-2*X[1]+X[0]*X[1]*X[1]*cos(X[0]*X[1]))/(X[0]*X[0]+X[1]*X[1]);
+               p = ((2*X[1])/(X[0]*X[0]+X[1]*X[1]))-(X[0]*cos(X[0]*X[1]));
                break;
          }     
          break;
       case 2:
          switch (J) {
             case 1:
-               p = exp(X[0]-X[1])-X[1]*sin(X[0]*X[1]);
+               p = (exp(X[0]-X[1]))-(X[1]*sin(X[0]*X[1]));
                break;
             case 2:
-               p = -1*exp(X[0]-X[1])-X[0]*sin(X[0]*X[1]);
+               p = (-1*exp(X[0]-X[1]))-X[0]*sin(X[0]*X[1]);
                break;
          }     
          break;
