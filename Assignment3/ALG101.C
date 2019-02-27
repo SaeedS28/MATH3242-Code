@@ -116,7 +116,7 @@ double P(int I, int J, double *X)
                p = (exp(X[0]-X[1]))-(X[1]*sin(X[0]*X[1]));
                break;
             case 2:
-               p = (-1*exp(X[0]-X[1]))-X[0]*sin(X[0]*X[1]);
+               p = (-1*exp(X[0]-X[1]))-(X[0]*sin(X[0]*X[1]));
                break;
          }     
          break;
